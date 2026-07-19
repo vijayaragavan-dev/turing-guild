@@ -19,6 +19,7 @@ import { AccountSettings } from './pages/student/AccountSettings';
 
 // Admin pages
 import { AdminDashboard } from './pages/admin/Dashboard';
+import { AdminManagement } from './pages/admin/AdminManagement';
 import { StudentManagement } from './pages/admin/StudentManagement';
 import { EventManagement } from './pages/admin/EventManagement';
 import { EventBuilder } from './pages/admin/EventBuilder';
@@ -63,6 +64,7 @@ function App() {
             }
           >
             <Route index element={<AdminDashboard />} />
+            <Route path="admins" element={<AdminManagement />} />
             <Route path="students" element={<StudentManagement />} />
             <Route path="events" element={<EventManagement />} />
             <Route path="events/new" element={<EventBuilder />} />

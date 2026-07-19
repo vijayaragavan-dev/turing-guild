@@ -105,3 +105,13 @@ export interface Student {
   firstLogin: boolean;
   createdAt?: string;
 }
+
+export interface Admin {
+  id: number;
+  fullName: string;
+  email: string;
+  isActive: boolean;
+  firstLogin: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+}

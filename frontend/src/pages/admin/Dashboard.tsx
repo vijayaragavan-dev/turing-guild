@@ -2,23 +2,27 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { studentsApi } from '../../api/students';
 import { eventsApi } from '../../api/events';
+import { adminsApi } from '../../api/admins';
 import type { Student, Event } from '../../types';
-import { Users, Calendar, Trophy, Plus } from 'lucide-react';
+import { Users, Calendar, Trophy, Plus, Shield } from 'lucide-react';
 
 export function AdminDashboard() {
   const [students, setStudents] = useState<Student[]>([]);
   const [events, setEvents] = useState<Event[]>([]);
+  const [adminCount, setAdminCount] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [studentsData, eventsData] = await Promise.all([
+        const [studentsData, eventsData, adminsData] = await Promise.all([
           studentsApi.getAllStudents(),
           eventsApi.getAllEvents(),
+          adminsApi.getAllAdmins(),
         ]);
         setStudents(studentsData);
         setEvents(eventsData);
+        setAdminCount(adminsData.length);
       } catch (error) {
         console.error('Failed to fetch data:', error);
       } finally {
@@ -49,7 +53,17 @@ export function AdminDashboard() {
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="bg-white rounded-lg shadow p-6">
+          <div className="flex items-center space-x-3">
+            <Shield className="text-slate-600" size={24} />
+            <div>
+              <p className="text-sm text-gray-500">Total Admins</p>
+              <p className="text-2xl font-bold">{adminCount}</p>
+            </div>
+          </div>
+        </div>
+
         <div className="bg-white rounded-lg shadow p-6">
           <div className="flex items-center space-x-3">
             <Users className="text-blue-500" size={24} />

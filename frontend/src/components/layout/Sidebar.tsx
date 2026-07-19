@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import {
   LayoutDashboard, Users, Calendar, Trophy,
-  ClipboardList, Settings
+  ClipboardList, Settings, Shield
 } from 'lucide-react';
 
 export function Sidebar() {
@@ -19,6 +19,7 @@ export function Sidebar() {
 
   const adminLinks = [
     { to: '/admin', icon: LayoutDashboard, label: 'Dashboard' },
+    { to: '/admin/admins', icon: Shield, label: 'Admin Management' },
     { to: '/admin/students', icon: Users, label: 'Students' },
     { to: '/admin/events', icon: Calendar, label: 'Events' },
     { to: '/admin/leaderboard', icon: Trophy, label: 'Leaderboard' },
