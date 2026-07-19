@@ -20,7 +20,7 @@ A full-stack web application for managing programming events, student participat
 ### 1. Database
 
 ```sql
-CREATE DATABASE tgms;
+CREATE DATABASE turing_guild;
 ```
 
 ### 2. Backend
